@@ -15,7 +15,7 @@ const Header = ({ text }) => {
   )
 }
 
-const Content = ({ text, count, add_text }) => {
+const StatisticLine = ({ text, count, add_text }) => {
   return (
     <p>{text} {count} {add_text}</p>
     )
@@ -23,14 +23,19 @@ const Content = ({ text, count, add_text }) => {
   
 const Statistics = ({ good, neutral, bad }) => {
   const all = bad + good + neutral;
+  if (all <= 0){
+    return (
+      <p>No Feedback Given</p>
+    )
+  }
   return (
     <>
-      <Content text={"good"} count={good}/>      
-      <Content text={"neutral"} count={neutral}/>      
-      <Content text={"bad"} count={bad}/>
-      <Content text={"all"} count={all}/>
-      <Content text={"average"} count={(good-bad)/all}/>
-      <Content text={"positive"} count={(good/all) * 100} add_text={"%"}/>
+      <StatisticLine text={"good"} count={good}/>      
+      <StatisticLine text={"neutral"} count={neutral}/>      
+      <StatisticLine text={"bad"} count={bad}/>
+      <StatisticLine text={"all"} count={all}/>
+      <StatisticLine text={"average"} count={(good-bad)/all}/>
+      <StatisticLine text={"positive"} count={(good/all) * 100} add_text={"%"}/>
     </>
   )
 }
