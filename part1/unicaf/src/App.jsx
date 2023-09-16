@@ -17,7 +17,9 @@ const Header = ({ text }) => {
 
 const StatisticLine = ({ text, count, add_text }) => {
   return (
-    <p>{text} {count} {add_text}</p>
+    <tr>
+      <td>{text}</td><td>{count} {add_text}</td>
+    </tr>
     )
   }
   
@@ -29,14 +31,16 @@ const Statistics = ({ good, neutral, bad }) => {
     )
   }
   return (
-    <>
-      <StatisticLine text={"good"} count={good}/>      
-      <StatisticLine text={"neutral"} count={neutral}/>      
-      <StatisticLine text={"bad"} count={bad}/>
-      <StatisticLine text={"all"} count={all}/>
-      <StatisticLine text={"average"} count={(good-bad)/all}/>
-      <StatisticLine text={"positive"} count={(good/all) * 100} add_text={"%"}/>
-    </>
+    <table>
+      <tbody>
+        <StatisticLine text={"good"} count={good}/>      
+        <StatisticLine text={"neutral"} count={neutral}/>      
+        <StatisticLine text={"bad"} count={bad}/>
+        <StatisticLine text={"all"} count={all}/>
+        <StatisticLine text={"average"} count={(good-bad)/all}/>
+        <StatisticLine text={"positive"} count={(good/all) * 100} add_text={"%"}/>
+      </tbody>
+    </table>
   )
 }
   const App = () => {
